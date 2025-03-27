@@ -1,3 +1,8 @@
+// 1) creare le celle con i numeri
+// 2) creare un generatore di numeri random da 1 a 90
+// 3) collegare un button al numero random
+// 4) evidenziare la cella corrispondente al numero estratto
+
 const cells = [];
 const form = document.getElementById("form");
 const button = document.createElement("button");
@@ -6,6 +11,7 @@ button.innerText = "Estrai nuovo numero";
 buttonReset.innerText = "Reset";
 form.appendChild(button);
 form.appendChild(buttonReset);
+console.log(cells);
 
 const createTable = function () {
   for (let i = 0; i < 90; i++) {
@@ -21,8 +27,6 @@ const createTable = function () {
   }
 };
 
-console.log(cells);
-// FUNZIONE PER NUMERO RANDOM
 const createRandomNumber = function () {
   const randomNumber = Math.floor(Math.random() * 90);
   return randomNumber;
@@ -31,15 +35,8 @@ const createRandomNumber = function () {
 button.onclick = function (e) {
   e.preventDefault();
   const randomNumber = createRandomNumber();
-  const cellaEstratta = cells[randomNumber - 1];
+  const cell = cells[randomNumber];
   console.log(randomNumber);
-  console.log(cellaEstratta);
-  cellaEstratta.classList.add("select");
+  cell.classList.add("select");
 };
-
-buttonReset.onclick = function (e) {
-  e.preventDefault();
-  window.location.reload();
-};
-
 createTable();
